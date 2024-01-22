@@ -1,0 +1,14 @@
+C:\Users\adamk\source\repos\pacman 2\obj\Debug\net7.0\pacman 2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\adamk\source\repos\pacman 2\obj\Debug\net7.0\pacman 2.AssemblyInfoInputs.cache
+C:\Users\adamk\source\repos\pacman 2\obj\Debug\net7.0\pacman 2.AssemblyInfo.cs
+C:\Users\adamk\source\repos\pacman 2\obj\Debug\net7.0\pacman 2.csproj.CoreCompileInputs.cache
+C:\Users\adamk\source\repos\pacman 2\bin\Debug\net7.0\pacman 2.exe
+C:\Users\adamk\source\repos\pacman 2\bin\Debug\net7.0\pacman 2.deps.json
+C:\Users\adamk\source\repos\pacman 2\bin\Debug\net7.0\pacman 2.runtimeconfig.json
+C:\Users\adamk\source\repos\pacman 2\bin\Debug\net7.0\pacman 2.dll
+C:\Users\adamk\source\repos\pacman 2\bin\Debug\net7.0\pacman 2.pdb
+C:\Users\adamk\source\repos\pacman 2\obj\Debug\net7.0\pacman 2.dll
+C:\Users\adamk\source\repos\pacman 2\obj\Debug\net7.0\refint\pacman 2.dll
+C:\Users\adamk\source\repos\pacman 2\obj\Debug\net7.0\pacman 2.pdb
+C:\Users\adamk\source\repos\pacman 2\obj\Debug\net7.0\pacman 2.genruntimeconfig.cache
+C:\Users\adamk\source\repos\pacman 2\obj\Debug\net7.0\ref\pacman 2.dll

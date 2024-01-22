@@ -5,68 +5,44 @@ namespace pacman
 {
     public class Map
     {
-        int x, y;
+        int x;
         public static char wall = '█';
         public static char emptySpace = ' ';
         public static char jewel = '·';
-        public static char smartGhostSymbol = 'E';
-        public static char stupidGhostSymbol = 'Y';
         public char[,] area = new char[31, 28];
 
+        
         public char Wall { get; set; }
         public char EmptySpace { get; set; }
         public char Jewel { get; set; }
 
-        public char this[int x, int y]
+        public char this[int x]
         {
             get
             {
-                if (x < 0) return area[y, 27];
-                else if (x > 27) return area[y, 0];
-                else return area[y, x];
+                if (x < 0) return area[x, 27];
+                else if (x > 27) return area[x, 0];
+                else return area [x];
             }
-            set
-            {
-                area[y, x] = value;
-                ForegroundColor = ConsoleColor.Green;
-                SetCursorPosition(x + 1, y + 1);
-                Write(value);
-                ForegroundColor = ConsoleColor.Red;
-            }
+            
         }
-        public void RenderChar(int x, int y, char symbol)
+        public void RenderChar(int x, char symbol)
         {
             if (x < 0) x = 27;
             else if (x > 27) x = 0;
             if (symbol == 'P') ForegroundColor = ConsoleColor.White;
             else if (symbol == 'X') ForegroundColor = ConsoleColor.Red;
-            else if (symbol == 'Y') ForegroundColor = ConsoleColor.Blue;
-            SetCursorPosition(x + 1, y + 1);
             Write(symbol);
             ForegroundColor = ConsoleColor.White;
-            area[y, x] = symbol;
+            area[x] = symbol;
         }
-        private void RenderWall(int x, int y)
+        private void RenderWall(int x)
         {
             ForegroundColor = ConsoleColor.Cyan;
             SetCursorPosition(x + 1, y + 1);
             Write(wall);
             ForegroundColor = ConsoleColor.White;
             area[y, x] = wall;
-        }
-        public void RenderEmptySpace(int x, int y)
-        {
-            SetCursorPosition(x + 1, y + 1);
-            Write(emptySpace);
-            area[y, x] = emptySpace;
-        }
-        public void RenderJewel(int x, int y)
-        {
-            ForegroundColor = ConsoleColor.Yellow;
-            SetCursorPosition(x + 1, y + 1);
-            Write(jewel);
-            ForegroundColor = ConsoleColor.White;
-            area[y, x] = jewel;
         }
         public void RenderMap()
         {

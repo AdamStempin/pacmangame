@@ -6,7 +6,7 @@ using static System.Console;
 
 namespace pacman
 {
-    class _
+    class program
     {
         public static bool gameOver = false;
         public static int score = 0;
@@ -14,16 +14,16 @@ namespace pacman
         public enum direction { left, up, right, down }
         static Thread background = new Thread(BackgroundGame);
         public static Map map = new Map();
-        public static Pacman pacman ;
-        
+        public static Pacman pacman;
+        public static List<Enemy> smartGhosts = new List<Enemy>();
 
         static void Main()
         {
-            Title = "PACMAN GAME";
+            Title = "PacmanGame";
             CursorVisible = false;
-            ForegroundColor = ConsoleColor.Red;
+            ForegroundColor = ConsoleColor.Cyan;
             SetCursorPosition(12, 15);
-            WriteLine("PacManGame");
+            WriteLine("PACMAN");
             Thread.Sleep(1500);
 
             map.RenderMap();
@@ -31,7 +31,7 @@ namespace pacman
 
             _.pacman = new Pacman(13, 23);
 
-           
+            _.Enemy.Add(new Enemy(15, 11, Object.direction.right));
 
             background.Start();
             background.IsBackground = true;
@@ -42,7 +42,7 @@ namespace pacman
             {
                 SetCursorPosition(12, 6);
                 ForegroundColor = ConsoleColor.Red;
-                Write("Game Over");
+                Write("JE MI ĽÚTO SKÚS TO ZNOVA!");
                 SetCursorPosition(12, 8);
                 ForegroundColor = ConsoleColor.Red;
                 Write("Score: {0}", score);
@@ -54,7 +54,7 @@ namespace pacman
             {
                 SetCursorPosition(12, 6);
                 ForegroundColor = ConsoleColor.Red;
-                Write("You Win!");
+                Write("GRATULÁCIA!");
                 SetCursorPosition(12, 8);
                 ForegroundColor = ConsoleColor.Red;
                 Write("Score: {0}", score);
@@ -65,7 +65,11 @@ namespace pacman
         }
         public static void BackgroundGame()
         {
-           
+            while (!_.gameOver)
+            {
+                if (score == 2430) gameOver = true;
+                pacman.Step();
+                foreach ( Enemy ghost in _.Enemy) ghost.Step();
                 ForegroundColor = ConsoleColor.Yellow;
                 SetCursorPosition(31, 1);
                 Write("Score: {0}", score);
@@ -73,3 +77,4 @@ namespace pacman
             }
         }
     }
+}

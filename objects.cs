@@ -3,7 +3,7 @@ using System;
 
 namespace pacman
 {
-    abstract class Object
+    abstract class enemy
     {
         public char currentStatePlace;
         public int x, y;
@@ -22,17 +22,7 @@ namespace pacman
                 return x;
             }
         }
-        public int Y
-        {
-            set
-            {
-                y = value;
-            }
-            get
-            {
-                return y;
-            }
-        }
+        
         public Random randomize = new Random();
 
         public abstract char GetSymbol();
@@ -44,11 +34,11 @@ namespace pacman
             if (Direction == direction.left) return _.map[x - 1, y];
             if (Direction == direction.right) return _.map[x + 1, y];
             if (Direction == direction.up) return _.map[x, y - 1];
-            return _.map[x, y + 1];
+            return _.map[x + 1];
         }
         public void KillPacman()
         {
-            if (_.pacman.x == x && _.pacman.y == y)
+            if (_.pacman.x == x )
             {
                 _.gameOver = true;
             }
@@ -60,14 +50,9 @@ namespace pacman
             _.map.RenderChar(x, y, currentStatePlace);
             if (Direction == direction.left) x--;
             if (Direction == direction.right) x++;
-            if (Direction == direction.up) y--;
-            if (Direction == direction.down) y++;
+           
 
-            if (_.map[x, y] != Map.stupidGhostSymbol && _.map[x, y] != Map.smartGhostSymbol)
-            {
-                currentStatePlace = _.map[x, y];
-            }
-            _.map.RenderChar(x, y, GetSymbol());
+           
         }
     }
 }

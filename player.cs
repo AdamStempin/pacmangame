@@ -1,18 +1,19 @@
 ﻿using pacman;
 using System;
+using System.Diagnostics;
 using System.Threading;
 
 namespace pacman
 {
     class Pacman : Object
     {
-        public Pacman(int x, int y)
+        public Pacman(int x)
         {
             this.X = x;
-            this.Y = y;
+           
             currentStatePlace = _.map.EmptySpace;
             objectDirection = direction.left;
-            _.map.RenderChar(x, y, GetSymbol());
+            _.map.RenderChar(x, GetSymbol());
         }
 
         static ConsoleKeyInfo KeyInfo = new ConsoleKeyInfo();
@@ -25,19 +26,19 @@ namespace pacman
 
                 if (KeyInfo.Key == ConsoleKey.LeftArrow)
                 {
-                    objectDirection = direction.left;
+                    ObjectDirection = direction.left;
                 }
                 else if (KeyInfo.Key == ConsoleKey.RightArrow)
                 {
-                    objectDirection = direction.right;
+                    ObjectDirection = direction.right;
                 }
                 else if (KeyInfo.Key == ConsoleKey.UpArrow)
                 {
-                    objectDirection = direction.up;
+                    ObjectDirection = direction.up;
                 }
                 else if (KeyInfo.Key == ConsoleKey.DownArrow)
                 {
-                    objectDirection = direction.down;
+                    ObjectDirection = direction.down;
                 }
             }
         }
@@ -54,14 +55,13 @@ namespace pacman
             _.map.RenderChar(x, y, currentStatePlace);
             if (Direction == direction.left) x--;
             if (Direction == direction.right) x++;
-            if (Direction == direction.up) y--;
-            if (Direction == direction.down) y++;
+           
             CalcScore();
-            _.map.RenderChar(x, y, GetSymbol());
+            _.map.RenderChar(x, GetSymbol());
         }
         public void CalcScore()
         {
-            if (_.map[x, y] == Map.jewel)
+            if (_.map[x] == Map.jewel)
             {
                 _.score += 10;
             }
